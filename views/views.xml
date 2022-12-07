@@ -1,0 +1,218 @@
+<odoo>
+  <data>
+
+<!-- Books -->
+    <menuitem id="lms_root" name="LMS"/>
+  
+    <record id="lms_books_action" model="ir.actions.act_window">
+        <field name="name">Books</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">lms.books</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create Books
+            </p>
+        </field>
+    </record>
+
+  <!-- Author -->
+
+    <record id="lms_authors_action" model="ir.actions.act_window">
+        <field name="name">Authors</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">lms.authors</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create Authors
+            </p>
+        </field>
+    </record>
+
+    <!-- Publisher  -->
+
+    <record id="lms_publishers_action" model="ir.actions.act_window">
+        <field name="name">Publishers</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">lms.publishers</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create Publishers
+            </p>
+        </field>
+    </record>
+
+        <!-- Category -->
+    <record id="lms_categories_action" model="ir.actions.act_window">
+        <field name="name">Categories</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">lms.categories</field>
+        <field name="view_mode">tree,form,graph</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create Categories
+            </p>
+        </field>
+    </record>
+
+        <!-- Awards -->
+
+    <record id="lms_awards_action" model="ir.actions.act_window">
+        <field name="name">Awards</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">lms.awards</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create Awards
+            </p>
+        </field>
+    </record>
+    
+
+    <menuitem 
+      id="lms_books" 
+      name="Manage Books"
+      parent='lms_root'
+      sequence='1'/>
+
+    <menuitem 
+      name="Books" 
+      id="menu_books_list" 
+      parent="lms_books"
+      action='lms_books_action'
+      sequence='1'/>
+
+    <menuitem 
+      name="Authors"
+      id="lms_authors_sub" 
+      action="lms_authors_action"
+      parent="lms_books"
+      sequence='2'/>
+
+    <menuitem 
+      name="Publishers"
+      id="lms_publishers_sub" 
+      action="lms_publishers_action"
+      parent="lms_books"
+      sequence='3'/>
+
+    <menuitem 
+      name="Categories"
+      id="lms_categories" 
+      action="lms_categories_action"
+      parent="lms_books"
+      sequence='4'/>
+
+    <menuitem 
+      name="Awards"
+      id="lms_awards_sub" 
+      action="lms_awards_action"
+      parent="lms_books"
+      sequence='5'/>
+
+
+    <!-- Member view -->
+    <record id="lms_members_action" model="ir.actions.act_window">
+        <field name="name">Members</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">lms.members</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create Member
+            </p>
+        </field>
+    </record>
+
+    <record id="lms_member_types_action" model="ir.actions.act_window">
+        <field name="name">Members Types</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">lms.typemember</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create Member Types
+            </p>
+        </field>
+    </record>
+
+    <menuitem 
+      id="lms_members" 
+      name="Members"
+      parent='lms_root'
+      sequence='3'/>
+
+    <menuitem 
+      name="Members" 
+      id="lms_members_sub" 
+      parent="lms_members"
+      action='lms_members_action'
+      sequence='1'/>
+
+    <menuitem 
+      name="Members Types" 
+      id="lms_member_types_sub" 
+      parent="lms_members"
+      action='lms_member_types_action'
+      sequence='2'/>
+
+
+    <!-- Issue Books -->
+        <record id="lms_issue_books_action" model="ir.actions.act_window">
+        <field name="name">Issue Books</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">lms.issue.books</field>
+        <field name="view_mode">tree,form,kanban,calendar</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Issue Books
+            </p>
+        </field>
+    </record>
+
+        <menuitem id="lms_root" name="LMS">
+      <menuitem id="lms_issue_books" name="Issue Books">
+          <menuitem id="lms_issue_books_sub" action="lms_issue_books_action"/>
+      </menuitem>
+    </menuitem>
+
+        <!-- Departments  -->
+
+    <record id="lms_departments_action" model="ir.actions.act_window">
+        <field name="name">Employee</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hr.employee</field>
+        <field name="view_mode">tree,form</field>
+        
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create Employee
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="lms_root" name="LMS">
+      <menuitem id="lms_departments" name="Departments">
+          <!-- <menuitem id="lms_departments_sub" action="hr.open_view_employee_list_my"/> -->
+          <menuitem id="lms_departments_sub" action="lms_departments_action"/>
+      </menuitem>
+    </menuitem>
+
+    <record id='action_product' model='ir.actions.act_window'>
+        <field name='name'>Product</field>
+        <field name='res_model'>product.template</field>
+        <field name='view_mode'>tree,form</field>
+      </record>
+
+      <menuitem 
+        id='menu_product' 
+        action='action_product' 
+        name='Product'
+        parent='lms_root'
+        sequence='6'/>
+
+  </data>
+</odoo>

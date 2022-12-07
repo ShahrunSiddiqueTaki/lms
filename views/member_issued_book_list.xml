@@ -1,0 +1,17 @@
+<odoo>
+    <record id="lms_members_issued_books" model="ir.ui.view">
+        <field name="name">lms.members.form</field>
+        <field name="model">lms.members</field>
+        <field name="inherit_id" ref="lms.lms_members_form" />
+        <field name="arch" type="xml">  
+            
+                <xpath expr="//notebook/page[1]" position="replace">  
+                    <page string="Issued Book List">
+                        <group>
+                            <field name="issued_books"/>
+                        </group>
+                    </page> 
+            </xpath>
+        </field>
+    </record>
+</odoo>

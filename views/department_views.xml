@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record id="lms_departments_tree" model="ir.ui.view">
+        <field name="name">hr.employee.tree</field>
+        <field name="model">hr.employee</field>
+        <field name="arch" type="xml">
+            <tree>
+                   <field name="name" readonly="1"/>
+                    <!-- <field name="work_phone" class="o_force_ltr" readonly="1"/> -->
+                    <field name="work_email"/>
+                    <!-- <field name="company_id" groups="base.group_multi_company" readonly="1"/> -->
+                    <field name="department_id"/>
+                    <!-- <field name="job_id"/> -->
+                    <!-- <field name="parent_id"/> -->
+                    <field name="work_location" optional="hide"/>
+                    <!-- <field name="coach_id" invisible="1"/> -->
+                  
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="lms_departments_form" model="ir.ui.view">
+        <field name="name">hr.employee.form</field>
+        <field name="model">hr.employee</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" readonly="1"/>
+                            <field name="work_phone" class="o_force_ltr" readonly="1"/>
+                            <field name="work_email"/>
+                            <field name="company_id" groups="base.group_multi_company" readonly="1"/>
+                            <field name="department_id"/>
+                            <field name="job_id"/>
+                            <field name="parent_id"/>
+                            <field name="work_location" optional="hide"/>
+                            <field name="coach_id" invisible="1"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+ 
+
+    <record id="lms_departments_search" model="ir.ui.view">
+        <field name="name">hr.employee.search</field>
+        <field name="model">hr.employee</field>
+        <field name="arch" type="xml">
+            <search string="Departments">
+                 <field name="name" readonly="1"/>
+                            <!-- <field name="work_phone" class="o_force_ltr" readonly="1"/> -->
+                            <field name="work_email"/>
+            </search>
+            </field>
+    </record>
+    
+
+</odoo>

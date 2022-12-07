@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record id="lms_categories_tree" model="ir.ui.view">
+        <field name="name">lms.categories.tree</field>
+        <field name="model">lms.categories</field>
+        <field name="arch" type="xml">
+            <tree>
+                    <field name='category_name'/>
+                    <field name='book_count'/>
+                    <field name='book_list' widget='many2many_tags'/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="lms_categories_form" model="ir.ui.view">
+        <field name="name">lms.categories.form</field>
+        <field name="model">lms.categories</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name='category_name'/>
+                            <field name='book_count'/>
+                            <field name='book_list' widget='many2many_tags'/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+ 
+
+    <record id="lms_categories_search" model="ir.ui.view">
+        <field name="name">lms.categories.search</field>
+        <field name="model">lms.categories</field>
+        <field name="arch" type="xml">
+            <search string="Members">
+                <field name='category_name'/>
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_lms_category_graph">
+    <field name="name">lms.categories.graph</field>
+    <field name="model">lms.categories</field>
+    <field name="type">graph</field>
+    <field name="arch" type="xml">
+            <graph string="Genre">
+                <field name='category_name'/>
+                <field name='book_count' type="measure"/>
+            </graph>
+        </field>
+    </record>
+    
+
+</odoo>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+     <record id='library_administration' model='res.groups'>
+        <field name='name'>Administration</field>
+        
+    </record>
+    <record id='library_librarian' model='res.groups'>
+        <field name='name'>Librarian </field>
+        
+    </record>
+
+    <record id='it_system_support' model='res.groups'>
+        <field name='name'>It System Support</field>
+        
+    </record>
+
+    <record id='library_sorter' model='res.groups'>
+        <field name='name'>Library Sorter</field>
+        
+    </record>
+
+    <record id='library_user' model='res.groups'>
+        <field name='name'>Library User</field>
+        
+    </record>
+
+</odoo>

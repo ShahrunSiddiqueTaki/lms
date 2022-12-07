@@ -1,0 +1,72 @@
+<odoo>
+    <data>
+      <template id="books_page" name="Books">
+        <t t-call="website.layout">
+            <div class="container">
+                <h3>Book Details</h3>
+                <table class="table table-bordered my-5">
+                    <thead>
+                        <tr>
+                            <th>
+                                Book Name
+                            </th>
+                            <th>
+                                Author
+                            </th>
+                            <th>
+                                Publisher
+                            </th>
+                            <th>
+                                Price
+                            </th>
+                            <th>
+                                Page
+                            </th>
+                            <th>
+                                Image
+                            </th>
+                            <th>
+                                Availability
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="books" t-as="book">
+                            <tr>
+                                <td>
+                                    <t t-esc="book.book_name"/>
+                                </td>
+                                <td>
+                                    <span t-field="book.author_name"/>
+                                </td>
+                                <td>
+                                    <span t-field="book.publisher"/>
+                                </td>
+                                <td>
+                                    <t t-esc="book.book_price"/>
+                                </td>
+                                <td>
+                                    <t t-esc="book.book_page"/>
+                                </td>
+                                <td>
+                                    <img t-attf-src="data:image/*;base64,{{book.book_image}}" style="width:50px; height:60px"/>
+                                </td>
+                                <t t-if="book.avalability == 'aval'">
+                                    <td class="text-success">Available</td>
+                                </t>
+                                <t t-else="book.avalability == 'notaval'">
+                                    <td class="text-danger">Not Available</td>
+                                </t>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+                <a role="button" class="btn btn-primary d-none d-md-inline-block" href="/books/print" target="_blank" aria-label="Print" title="Print"><i class="fa fa-print"></i> Print</a>
+                <!-- <a t-attf-href="'/report/render_qweb_pdf/lms.report_books/%s' % id">
+                    <button type="button" class="btn btn-primary btn-md o_website_form_send">Print Report</button>
+                </a> -->
+            </div>
+        </t>
+      </template>
+    </data>
+</odoo>

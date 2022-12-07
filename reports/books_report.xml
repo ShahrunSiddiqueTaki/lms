@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <report
+        id="report_books_card"
+        string="Books Card"
+        model="lms.books"
+        report_type="qweb-pdf"
+        name="lms.report_books"
+        file="lms.report_books"/>
+
+    <template id="report_books">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                        <div class="oe_structure"/>
+                        <div class="row">
+                            <div class="col-xs-2" style="margin:auto;">
+                            </div>
+                            <center>
+                                <div class="col-xs-8" style="margin:auto">
+                                    <table class="table table-condensed" style="border: 3px solid black !important;">
+                                        <tr>
+                                            <td width="40%">
+                                                <p style="text-align:center;">
+                                                    <h2><strong><span t-field="o.book_name"/></strong></h2>
+                                                </p>
+                                            </td>
+                                            <td width="60%">
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                            <p style="text-align:right;"><strong>Books: </strong></p>
+                                                            <p style="text-align:right;"><strong>Price: </strong></p>
+                                                            <p style="text-align:right;"><strong>Page: </strong></p>
+                                                        </td>
+                                                        <td>
+                                                            <p style="text-align:left;padding-left:10px;"  t-field="o.book_name"/>
+                                                            <p style="text-align:left;padding-left:10px;" t-field="o.book_price"/>
+                                                            <p style="text-align:left;padding-left:10px;" t-field="o.book_page"/>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </center>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

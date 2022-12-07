@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_lms_lms,lms.lms,model_lms_books,lms.it_system_support,1,1,1,1
+
+access_lms_sorter,lms.sorter,model_lms_members,lms.library_sorter,1,0,0,0

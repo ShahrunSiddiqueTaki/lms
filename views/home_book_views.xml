@@ -1,0 +1,61 @@
+<odoo>
+    <data>
+    <!-- === Services Page === -->
+     <record id="lmsbooks_page" model="website.page">
+         <field name="name">LMS Book page</field>
+         <field name="website_published">True</field>
+         <field name="url">/lmsbooks</field>
+         <field name="type">qweb</field>
+         <field name="key">theme_tutorial.lmsbooks_page</field>
+         <field name="arch" type="xml">
+             <t t-name="theme_tutorial.lmsbooks_page_template">
+                <!-- <t t-call="website.layout">
+                    <div id="wrap">
+                        <div class="container">
+                            <h3>Book Details</h3>
+                            <t t-foreach="books" t-as="book">
+                                <div class="card" style="width: 18rem;">
+                                    <img class="card-img-top"t-attf-src="data:image/*;base64,{{book.book_image}}" style="width:50px; height:60px">
+                                    <div class="card-body">
+                                        <h5 class="card-title" t-esc="book.book_name"/>
+                                        <p class="card-text" t-esc="book.book_price"/>
+                                        <p class="card-text" t-esc="book.book_page"/>
+                                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                                    </div>
+                                </div>
+                            </t>    
+                        </div>
+                    </div>
+                    <div class="oe_structure"/>
+                </t> -->
+             </t>
+         </field>
+     </record>
+
+    <record id="lmsbooks_page_link" model="website.menu">
+        <field name="name">LMS Book</field>
+        <field name="page_id" ref="lmsbooks"/>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence">60</field>
+    </record>
+
+      <!-- <template id="home_books_page" name="Books">
+        <t t-call="website.layout">
+            <div class="container">
+                <h3>Book Details</h3>
+                <t t-foreach="books" t-as="book">
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top"t-attf-src="data:image/*;base64,{{book.book_image}}" style="width:50px; height:60px">
+                        <div class="card-body">
+                            <h5 class="card-title" t-esc="book.book_name"/>
+                            <p class="card-text" t-esc="book.book_price"/>
+                            <p class="card-text" t-esc="book.book_page"/>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </t>    
+            </div>
+        </t>
+      </template> -->
+    </data>
+</odoo>

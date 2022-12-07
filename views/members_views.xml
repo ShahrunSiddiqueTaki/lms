@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Tree view -->
+
+    <record id="lms_members_tree" model="ir.ui.view">
+        <field name="name">lms.members.tree</field>
+        <field name="model">lms.members</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name='member_name'/>
+                <field name='member_image' widget="image" class="Your_custom_class"/>
+                <field name='member_id'/>
+                <field name='member_email'/>
+                <field name='mobile'/>
+                <field name='gender'/>
+                <field name='address'/>
+                <field name='book_on_hand'/>
+                <field name='due'/>
+            </tree>
+            
+        </field>
+    </record>
+
+        <!-- Kanban view -->
+    <record id="view_members_kanban" model="ir.ui.view">
+        <field name="name">lms.members.kanban</field>
+        <field name="model">lms.members</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="gender" >
+                <field name='member_name'/>
+                <field name='member_id'/>
+                <field name='member_email'/>
+                <field name='mobile'/>
+                <field name='gender'/>
+                <field name='address'/>
+                <field name='due'/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click shadow-kanban">
+                            <div class="oe_kanban_details">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <ul>
+                                   
+                                    <li>
+                                        Member Name:  <field name='member_name'/>
+                                    </li>
+                                    <li>
+                                        Member ID:  <field name='member_id'/>
+                                    </li>
+                                    <li>
+                                        Member Email:  <field name='member_email'/>
+                                    </li>
+                                    <li>
+                                        Member Mobile:  <field name='mobile'/>
+                                    </li>
+                                    <li>
+                                        Member Gender:   <field name='gender'/>
+                                    </li>
+                                    <li>
+                                        Member Address:   <field name='address'/>
+                                    </li>
+                                    <li>
+                                        Member Due:  <field name='due'/>
+                                    </li>
+                                </ul>
+                                </div>
+                                    <div class="col-md-4">
+                                        <div class="o_kanban_image">
+                                            <field name="member_image" nolabel="1" widget="image" class="oe_right oe_avatar"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    
+
+    <!-- Form view -->
+
+    <record id="lms_members_form" model="ir.ui.view">
+        <field name="name">lms.members.form</field>
+        <field name="model">lms.members</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name='member_name'/>
+                            <field name='member_id'/>
+                            <field name='member_email'/>
+                            <field name='mobile'/>
+                            <field name='gender'/>
+                            <field name='address'/>
+                            <field name='member_image' widget="image"/>
+                            <field name='due'/>
+                        </group>
+        
+                        <!-- <group> -->
+                            <notebook>
+                                <page string="List">
+                                <!-- <group>
+                                      <field name='book_on_hand'/>
+                                </group> -->
+                              
+                                </page>
+                            </notebook>
+                        <!-- </group> -->
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="lms_members_search" model="ir.ui.view">
+        <field name="name">lms.members.search</field>
+        <field name="model">lms.members</field>
+        <field name="arch" type="xml">
+            <search string="Members">
+                 <field name='member_name'/>
+                <field name='member_id'/>
+                <field name='member_email'/>
+                <field name='mobile'/>
+                <field name='gender'/>
+                <field name='address'/>
+            </search>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record id="lms_publishers_tree" model="ir.ui.view">
+        <field name="name">lms.publishers.tree</field>
+        <field name="model">lms.publishers</field>
+        <field name="arch" type="xml">
+        <tree>
+                <field name='publisherName'/>
+                <field name='totalBooks'/>
+                <field name='bookList' widget='one2many_tags'/>
+                <field name='publisherImage' widget="image" class="Your_custom_class"/>
+                
+
+                
+                
+            </tree>
+            
+        </field>
+    </record>
+
+   
+
+     <record id="view_publishers_kanban" model="ir.ui.view">
+        <field name="name">lms.publishers.kanban</field>
+        <field name="model">lms.publishers</field>
+        <field name="arch" type="xml">
+            <kanban default_order="publisherName" >
+                <field name='publisherName'/>
+                <field name='totalBooks'/>
+                <field name='bookList' widget='one2many_tags'/>
+                
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click shadow-kanban">
+                            <div class="oe_kanban_details">
+                                <div class="row">
+                                    
+                                    <div class="col-md-5 ml-2">
+                                        <h3>Title: <field name='publisherName'/></h3>
+                                        <p>Total Books: <field name='totalBooks'/></p>
+                                        <p>Book List: <field name='bookList' widget='one2many_tags'/> </p>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="o_kanban_image ">
+                                            <field name="publisherImage" nolabel="1" widget="image" class="oe_right oe_avatar"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    
+
+
+    <record id="lms_publishers_form" model="ir.ui.view">
+        <field name="name">lms.publishers.form</field>
+        <field name="model">lms.publishers</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name='publisherName'/>
+                            <field name='totalBooks'/>
+                            <field name='publisherImage' widget="image" class="image-kanban"/>
+                                        
+                           
+                            
+                            
+                            
+                            
+                           
+                        </group>
+        
+                        <!-- <group> -->
+                            <notebook>
+                                <page string="List">
+                                <group>
+                                     <field name='bookList'/>
+                                </group>
+                              
+                                </page>
+                            </notebook>
+                        <!-- </group> -->
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <!-- <record id="lms_publishers_action" model="ir.actions.act_window">
+        <field name="name">Publishers</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">lms.publishers</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create Publishers
+            </p>
+        </field>
+    </record> -->
+
+    <record id="lms_publishers_search" model="ir.ui.view">
+        <field name="name">lms.publishers.search</field>
+        <field name="model">lms.publishers</field>
+        <field name="arch" type="xml">
+            <search string="Publishers">
+                <field name='publisherName'/>
+                <field name='bookList'/>
+                <!-- <separator/>
+                <filter string="Available" name="available" domain="['|', ('status', '=', 'new'),('status', '=', 'offer_received')]"/>
+                <group expand="1" string="Group By">
+                        <filter string="Ability" name="ability" context="{'group_by':'postCode'}"/>
+                </group> -->
+            </search>
+            </field>
+    </record>
+    
+    
+    <!-- <menuitem id="real_estate_root"
+            name="My Estate"
+            web_icon="sale_management,static/description/icon.png"
+            sequence="9"/>
+
+
+    <menuitem id="estate_property"
+        name="Advertisements"
+        parent="real_estate_root"
+        action="estate_action"
+        sequence="9"/>
+         -->
+         
+
+    <!-- <menuitem id="lms_root" name="LMS">
+      <menuitem id="lms_publishers" name="Publishers">
+          <menuitem id="lms_publishers_sub" action="lms_publishers_action"/>
+      </menuitem>
+    </menuitem> -->
+
+
+
+</odoo>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="menu_member_form12" model="website.menu">
+        <field name="name">Create Member</field>
+        <field name="url">/member_webform</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence">55</field>
+    </record>
+
+    <template id="create_member" name="Create Member">
+        <t t-call="website.layout">
+            <div id="wrap">
+                <div class="oe_structure">
+                    <div class="container">
+                        <form role="form" action="/create/webmember" method="POST" enctype="multipart/form-data" class="mb-5">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <div class="form-group">
+                                <label for="member_name" class="control-label">Name</label>
+                                <input type="text" name="member_name" t-att-value="member_name" id="member_name"
+                                       class="form-control" placeholder="e.g. John Doe" required="required"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="control-label">Email</label>
+                                <input type="email" name="member_email" t-att-value="member_email" id="member_email"
+                                       class="form-control" required="required"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="mobile" class="control-label">Mobile</label>
+                                <input type="tel" name="mobile" t-att-value="mobile" id="mobile"
+                                       class="form-control" required="required"/>
+                            </div>
+
+                            <div class="clearfix oe_login_buttons">
+                                <button type="submit" class="btn btn-primary pull-left">Create Member</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <record id="member_thanks" model="website.page">
+        <field name="name">Thanks</field>
+        <field name="type">qweb</field>
+        <field name="url">/member-thank-you</field>
+        <field name="website_published">True</field>
+        <field name="key">lms.member_thanks</field>
+        <field name="arch" type="xml">
+            <t name="Thanks" t-name="lms.member_thanks">
+                <t t-call="website.layout">
+                  <div id="wrap">
+                    <div class="container">
+                        <h1>Thanks!</h1>
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div class="alert alert-success" role="status">
+                                    The Member has been Created successfully.
+                                </div>
+                                <p>
+                                    Visit Library At Any Time
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                </t>
+            </t>
+        </field>
+    </record>
+
+    <record id="menu_books_show" model="website.menu">
+        <field name="name">Books</field>
+        <field name="url">/books</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence">56</field>
+    </record>
+
+    <template id="index">
+        <t t-call="website.layout">
+            <t t-set="title">Books</t>
+            <div class="oe_structure">
+                <div class="container">
+                    <t t-foreach="books" t-as="book">
+                        <p><t t-esc="lms.book_name"/></p>
+                    </t>
+                </div>
+            </div>
+        </t>
+    </template>
+
+</odoo>

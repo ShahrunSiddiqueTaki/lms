@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id='lms_books_tree' model='ir.ui.view'>
+        <field name='name'>lms.books.tree</field>
+        <field name='model'>lms.books</field>
+        <field name='arch' type='xml'>
+            <tree>
+                <field name='book_name'/>
+                <field name='author_name' widget='many2many_tags'/>
+                <field name='publisher' />
+                <field name='book_price'/>
+                <field name='book_page'/>
+                <field name='book_ISBN'/>
+                <field name='book_category' widget='many2many_tags'/>
+                 <field name='book_image' widget="image" class="Your_custom_class"/>
+            </tree>
+        </field>
+    </record>
+
+
+
+    <record id="lms_books_form" model="ir.ui.view">
+        <field name="name">lms.books.form</field>
+        <field name="model">lms.books</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="create_book_form" type="object" string='Create Book by ISBN' class='btn btn-success'/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name='book_name'/>
+                            <field name='author_name' widget='many2many_tags'/>
+                            <field name='publisher'/>
+                            <field name='book_price'/>
+                            <field name='book_page'/>
+                            <field name='avalability'/>
+                            <field name='book_ISBN'/>
+                            <field name='book_image' widget="image"/>
+                            <field name='lms_employee_id'/>
+                        </group>
+        
+                        <!-- <group> -->
+                            <notebook>
+                                <page string="Description">
+                                <group>
+                                    <field name='book_category' widget='many2many_tags'/>
+                                    <field name='book_description'/>
+                                </group>
+                                
+                                </page>
+                            </notebook>
+                        <!-- </group> -->
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+
+
+    <record id="lms_books_search" model="ir.ui.view">
+        <field name="name">lms.books.search</field>
+        <field name="model">lms.books</field>
+        <field name="arch" type="xml">
+            <search string="Books">
+                 <field name='book_name'/>
+                <field name='author_name'/>
+                <field name='publisher'/>
+                <field name='book_price'/>
+                <field name='book_page'/>
+                <field name='avalability'/>
+                <field name='book_ISBN'/>
+            </search>
+            </field>
+    </record>
+
+
+        <!-- Kanban view -->
+    <record id="view_books_kanban" model="ir.ui.view">
+        <field name="name">lms.books.kanban</field>
+        <field name="model">lms.books</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="avalability" group_create="false" class="o_kanban_small_column o_kanban_project_tasks" on_create="quick_create" quick_create_view="project.quick_create_task_form" examples="project">
+                <field name='book_name'/>
+                <field name='author_name'/>
+                <field name='publisher'/>
+                <progressbar field="avalability" colors='{"aval": "success", "notaval": "danger"}' />
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+                            <div class="oe_kanban_details">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="o_kanban_image">
+                                            <field name="book_image" nolabel="1" widget="image" class="oe_right oe_avatar"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5 ml-2">
+                                        <h3>Title: <field name='book_name'/></h3>
+                                        <p>Author: <field name='author_name'/></p>
+                                        <p>Price: <field name='book_price'/> </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- <record id="test_kanban_view" model="ir.ui.view">
+        <field name="name">test.test.kanban.view</field>
+        <field name="model">test.test</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="id"/>
+                <field name="name"/>
+                <field name="image_medium"/>
+                <templates>
+                    <t t-name="kanban-box">
+                    <div t-attf-class="oe_kanban_global_click">
+                        <div class="oe_kanban_details">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="o_kanban_image">
+                                        <img t-att-src="kanban_image('test.test','image_medium',record.id.raw_value)"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <strong><field name="name"/></strong>
+                                    <div name="tags"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record> -->
+
+</odoo>

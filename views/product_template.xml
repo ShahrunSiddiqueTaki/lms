@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="category_books" model="product.public.category">
+        <field name="name">Books</field>
+        <field name="parent_id" ref="website_sale.categ_others"/>
+    </record>
+
+    <record id="books1" model="product.template">
+        <field name="name">Book 0</field>
+        <field name="publisher" ref="blooms"/>
+        <field name="public_categ_ids" eval="[4, ref('lms.category_books'), False]"/>
+        <field name="website_published">True</field>
+        <field name="list_price" type="float">0</field>
+        <field name="type">service</field>
+    </record>
+
+    
+</odoo>

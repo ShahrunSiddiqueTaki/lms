@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="create_book_isbn" model="ir.ui.view">
+        <field name="name">lms.books.isbn.form</field>
+        <field name="model">lms.books</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name='create_book_isbn'/>
+                    </group>
+                    <footer>
+                        <button name="create_book_btn" type="object" string='Create Book' class='btn btn-success'/>
+                    </footer>
+                </sheet>
+                
+                
+            </form>
+        </field>
+    </record>
+    
+
+
+
+
+</odoo>

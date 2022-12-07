@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_server_lms_returned" model="ir.actions.server">
+        <field name="name">Returned</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="model_lms_issue_books" />
+        <field name="binding_model_id" ref="model_lms_issue_books" />
+        <field name="state">code</field>
+        <field name="code">action = records.action_returned() </field>
+    </record>
+
+    <record id="action_server_lms_renew" model="ir.actions.server">
+        <field name="name">Renew</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="model_lms_issue_books" />
+        <field name="binding_model_id" ref="model_lms_issue_books" />
+        <field name="state">code</field>
+        <field name="code">action = records.action_renew() </field>
+    </record>
+
+    <record id="lms_issue_books_tree" model="ir.ui.view">
+        <field name="name">lms.issue.books.tree</field>
+        <field name="model">lms.issue.books</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name='book' widget='many2many_tags'/>
+                <field name='member'/>
+                <field name='amount' sum="Total Fine"/>
+                <field name='taking_date'/>
+                <field name='return_date'/>
+                <field name='duration'/>
+                <field name='issue_book_status'/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="lms_issue_books_form" model="ir.ui.view">
+        <field name="name">lms.issue.books.form</field>
+        <field name="model">lms.issue.books</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_returned" type="object" string='Return book' class='oe_highlight'>
+                    </button>
+                    
+                    <button name="action_renew" type="object" string='Renew Book' class='btn btn-success'/>
+                    
+                    <button name="action_url" type="object" string='URL' class='btn btn-primary'/>
+
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name='book' widget='many2many_tags'/>
+                            <field name='member'/>
+                            <field name='amount'/>
+                            <field name='taking_date'/>
+                            <field name='return_date'/>
+                            <field name='duration'/>
+                            <field name='issue_book_status'/>
+                        </group>
+                        
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+
+    <record id="lms_members_search" model="ir.ui.view">
+        <field name="name">lms.issue.books.search</field>
+        <field name="model">lms.issue.books</field>
+        <field name="arch" type="xml">
+            <search string="Issue Books">
+                <field name='book'/>
+                <field name='member'/>
+                <field name='amount'/>
+                <field name='taking_date'/>
+                <field name='return_date'/>
+                <field name='duration'/>
+                <field name='issue_book_status'/>
+            </search>
+        </field>
+    </record>
+
+        <!-- Kanban view -->
+    <record id="view_issuebooks_kanban" model="ir.ui.view">
+        <field name="name">lms.issuebooks.kanban</field>
+        <field name="model">lms.issue.books</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="issue_book_status" group_create="false" class="o_kanban_small_column o_kanban_project_tasks" on_create="quick_create" quick_create_view="project.quick_create_task_form" examples="project">
+                <field name='book'/>
+                <field name='member'/>
+                <progressbar field="issue_book_status" colors='{"issued": "success", "return": "info", "due": "danger"}' />
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+                            <div class="oe_kanban_details">
+                                <ul>
+                                    <li>
+                                        <h3>Title: <field name='book'/></h3>
+                                    </li>
+                                    <li>
+                                        Member Name: <field name='member'/>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+<!-- Calender View  -->
+    <record id="view_lms_issuebooks_calendar" model="ir.ui.view">   
+        <field name="name">lms.issue.books.calendar</field>   
+        <field name="model">lms.issue.books</field>   
+        <field name="arch" type="xml">       
+            <calendar string="Calendar"                 
+            date_start="taking_date"               
+            date_stop="return_date"
+            date_delay="duration"                
+            event_open_popup="true"                 
+            mode="month"                 
+            color="book"                 
+            quick_add="False">           
+                <field name="book"/>
+                <field name='duration'/>
+            </calendar> 
+        </field>
+    </record>
+</odoo>

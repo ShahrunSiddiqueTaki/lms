@@ -1,0 +1,24 @@
+.Your_custom_class > img { 
+    height: 30px; 
+    width: 30px;
+ }
+
+
+ .style_kanban{
+     border-radius: 5px;
+     background-color: black;
+     color: white;
+ }
+
+ .shadow-kanban{
+    /* box-shadow: 0 3px 10px rgb(0 0 0 / 0.2); */
+    background: #eee;
+    box-shadow: 0 8px 8px -4px lightblue;
+   
+ }
+
+ .image-kanban > img {
+    border-radius: 50%;
+  box-shadow: 0 0 50px #ccc;
+    
+ }

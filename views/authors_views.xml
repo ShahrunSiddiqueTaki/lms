@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record id="lms_authors_tree" model="ir.ui.view">
+        <field name="name">lms.authors.tree</field>
+        <field name="model">lms.authors</field>
+        <field name="arch" type="xml">
+        <tree>
+                <field name='author_name'/>
+                <field name='author_image' widget="image" class="Your_custom_class"/>
+                <field name='birth_date'/>
+                <field name='gender'/>
+                 <field name='awards'/>
+                <field name='total_books'/>
+                <field name='book_list' widget='many2many_tags'/>
+                
+            </tree>
+            
+        </field>
+    </record>
+
+
+      <!-- Kanban view -->
+    <record id="view_authors_kanban" model="ir.ui.view">
+        <field name="name">lms.authors.kanban</field>
+        <field name="model">lms.authors</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="gender"  class="o_res_partner_kanban" create="true">
+                <field name='author_name'/>
+                <field name='birth_date'/>
+                <field name='gender'/>
+                <field name='total_books'/>
+                <field name='awards'/>
+               
+                <!-- <progressbar field="issue_book_status" colors='{"issued": "success", "return": "info", "due": "danger"}' /> -->
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+                            <div class="oe_kanban_details">
+                            <div class="row">
+                                <div class="col-md-8">
+                                     <ul>
+                                    <li>
+                                        <h3>Name: <field name='author_name'/></h3>
+                                    </li>
+                                    <li>
+                                        Date Of Birth: <field name='birth_date'/>
+                                    </li>
+                                    <li>
+                                        Date Of Birth: <field name='gender'/>
+                                    </li>
+                                     <li>
+                                        <h3>Total Books: <field name='total_books'/></h3>
+                                    </li>
+                                    <li>
+                                        Awards : <field name='awards' widget='many2many_tags'/>
+                                    </li>
+                                </ul>
+                                </div>
+                                <div class="col-md-4">
+                                     <div class="o_kanban_image">
+                                            <field name="author_image" nolabel="1" widget="image" class="oe_right oe_avatar"/>
+                                        </div>
+                                </div>
+                            </div>
+                               
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+   
+
+    
+
+
+    <record id="lms_authors_form" model="ir.ui.view">
+        <field name="name">lms.authors.form</field>
+        <field name="model">lms.authors</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name='author_name'/>
+                            <field name='author_image' widget="image"/>
+                            <field name='birth_date'/>
+                            <field name='gender'/>
+                            <field name='total_books'/>
+                             <field name='awards'/>
+                        </group>
+        
+                        <!-- <group> -->
+                            <notebook>
+                                <page string="List">
+                                <group>
+                                      <field name='book_list' widget='many2many_tags'/>
+                                        
+                                </group>
+                              
+                                </page>
+                            </notebook>
+                        <!-- </group> -->
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+
+    <record id="lms_members_search" model="ir.ui.view">
+        <field name="name">lms.authors.search</field>
+        <field name="model">lms.authors</field>
+        <field name="arch" type="xml">
+                 <search string="Members">
+                 <field name='awards'/>
+                <field name='author_name'/>
+                <field name='gender'/>
+                <field name='book_list'/>
+            </search>
+            </field>
+    </record>
+    
+
+
+</odoo>
